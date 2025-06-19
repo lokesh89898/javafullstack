@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Resume</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; padding: 20px;">
+
+  <header>
+    <h1>Lokesh Polagani</h1>
+    <h2>Java Full Stack Developer</h2>
+    <p>
+      Email: lokesh@example.com | Phone: +91-9876543210 <br>
+      <a href="https://www.linkedin.com/in/lokeshpolagani">LinkedIn</a> |
+      <a href="https://github.com/lokeshpolagani">GitHub</a>
+    </p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I am a passionate Java Full Stack Developer with a strong interest in building efficient and scalable web applications. 
+      I enjoy solving complex problems and continuously improving my coding skills.
+    </p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li>B.Tech in Computer Science, ABC University, 2023</li>
+      <li>Intermediate, XYZ Junior College, 2019</li>
+      <li>SSC, LMN High School, 2017</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Internship Experience</h2>
+    <article>
+      <h3>Web Development Intern</h3>
+      <p><strong>Tech Solutions Pvt Ltd</strong> | Jan 2023 - Apr 2023</p>
+      <ul>
+        <li>Developed responsive web pages using HTML, CSS, and JavaScript.</li>
+        <li>Collaborated with backend team to integrate REST APIs.</li>
+        <li>Worked on UI improvements for better user experience.</li>
+    </ul>
+    </article>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <ul>
+<li>Technical: Java, Spring Boot, HTML, CSS, JavaScript, MySQL</li>
+     <li>Soft Skills: Communication, Teamwork, Problem Solving</li>
+  </ul>
+</section>
+
+  <section>
+    <h2>Projects</h2>
+    <article>
+      <h3>Online Book Store</h3>
+<p>A full stack web application for browsing and purchasing books online. Implemented user authentication, product catalog, and shopping cart features.</p>
+    </article>
+    <article>
+      <h3>Student Management System</h3>
+      <p>A Java-based desktop application for managing student records, including enrollment, grades, and attendance tracking.</p>
+    </article>
+  </section>
+
+  <footer>
+    <p>Certifications: Oracle Certified Java Programmer, Responsive Web Design (freeCodeCamp)</p>
+    <p>&copy; 2025 Lokesh Polagani</p>
+  </footer>
+
+</body>
+</html>
