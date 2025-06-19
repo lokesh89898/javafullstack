@@ -1,0 +1,183 @@
+import React, { useState } from 'react';
+function App() {
+  return (
+    <div className="container py-5">
+      <h2 className="text-center mb-4">Registration & Login</h2>
+      <div className="row">
+        <div className="col-md-6">
+          <RegistrationForm />
+        </div>
+        <div className="col-md-6">
+          <LoginForm />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    mobile: '',
+    dob: '',
+    gender: '',
+    terms: false
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const validate = () => {
+    let errs = {};
+    if (!formData.name) errs.name = "Name is required";
+    if (!formData.email) errs.email = "Email is required";
+    if (!formData.password || formData.password.length < 6) errs.password = "Password min 6 characters";
+    if (!/^\d{10}$/.test(formData.mobile)) errs.mobile = "Enter 10 digit mobile";
+    if (!formData.dob) errs.dob = "DOB required";
+    if (!formData.gender) errs.gender = "Gender required";
+    if (!formData.terms) errs.terms = "You must agree to terms";
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validate()) {
+      alert("Registration successful!");
+      setFormData({
+        name: '', email: '', password: '', mobile: '', dob: '', gender: '', terms: false
+      });
+      setErrors({});
+    }
+  };
+
+  return (
+    <div className="card shadow">
+      <div className="card-header"><strong>Register</strong></div>
+      <div className="card-body">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-2">
+            <label>Full Name</label>
+            <input name="name" value={formData.name} onChange={handleChange} className="form-control"/>
+            {errors.name && <div className="text-danger">{errors.name}</div>}
+          </div>
+
+          <div className="mb-2">
+            <label>Email</label>
+            <input name="email" type="email" value={formData.email} onChange={handleChange} className="form-control"/>
+            {errors.email && <div className="text-danger">{errors.email}</div>}
+          </div>
+
+          <div className="mb-2">
+            <label>Password</label>
+            <input name="password" type="password" value={formData.password} onChange={handleChange} className="form-control"/>
+            {errors.password && <div className="text-danger">{errors.password}</div>}
+          </div>
+
+          <div className="mb-2">
+            <label>Mobile Number</label>
+            <input name="mobile" value={formData.mobile} onChange={handleChange} className="form-control"/>
+            {errors.mobile && <div className="text-danger">{errors.mobile}</div>}
+          </div>
+
+          <div className="mb-2">
+            <label>Date of Birth</label>
+            <input name="dob" type="date" value={formData.dob} onChange={handleChange} className="form-control"/>
+            {errors.dob && <div className="text-danger">{errors.dob}</div>}
+          </div>
+
+          <div className="mb-2">
+            <label>Gender</label><br/>
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="gender" value="Male"
+                     checked={formData.gender === "Male"} onChange={handleChange}/>
+              <label className="form-check-label">Male</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="gender" value="Female"
+                     checked={formData.gender === "Female"} onChange={handleChange}/>
+              <label className="form-check-label">Female</label>
+            </div>
+            {errors.gender && <div className="text-danger">{errors.gender}</div>}
+          </div>
+
+          <div className="form-check mb-2">
+            <input className="form-check-input" type="checkbox" name="terms"
+                   checked={formData.terms} onChange={handleChange}/>
+            <label className="form-check-label">Agree to terms</label>
+            {errors.terms && <div className="text-danger">{errors.terms}</div>}
+          </div>
+
+          <button type="submit" className="btn btn-primary w-100">Register</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function LoginForm() {
+  const [loginData, setLoginData] = useState({
+    email: '', password: ''
+  });
+
+  const [loginErrors, setLoginErrors] = useState({});
+
+  const handleLoginChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const validateLogin = () => {
+    let errs = {};
+    if (!loginData.email) errs.email = "Email required";
+    if (!loginData.password) errs.password = "Password required";
+    setLoginErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    if (validateLogin()) {
+      alert("Login successful!");
+      setLoginData({ email: '', password: '' });
+      setLoginErrors({});
+    }
+  };
+
+  return (
+    <div className="card shadow">
+      <div className="card-header"><strong>Login</strong></div>
+      <div className="card-body">
+        <form onSubmit={handleLoginSubmit}>
+          <div className="mb-2">
+            <label>Email</label>
+            <input name="email" type="email" value={loginData.email} onChange={handleLoginChange} className="form-control"/>
+            {loginErrors.email && <div className="text-danger">{loginErrors.email}</div>}
+          </div>
+
+          <div className="mb-2">
+            <label>Password</label>
+            <input name="password" type="password" value={loginData.password} onChange={handleLoginChange} className="form-control"/>
+            {loginErrors.password && <div className="text-danger">{loginErrors.password}</div>}
+          </div>
+
+          <button type="submit" className="btn btn-success w-100">Login</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default App;
